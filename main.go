@@ -104,5 +104,5 @@ func main() {
 	go findRooms(roomCodes[300001:350000])
 	go findRooms(roomCodes[350001:400000])
 	go findRooms(roomCodes[400001:456976])
-	findRooms(roomCodes) // 0 - 100000
+	findRooms(roomCodes) // begins from 0
 }
