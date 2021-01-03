@@ -2,11 +2,25 @@ package main
 
 import (
 	"bufio"
+	"encoding/json"
+	"fmt"
+	"github.com/fatih/color"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
 )
+
+type Room struct {
+	RoomId           string
+	Server           string
+	AppTag           string
+	AppId            string
+	NumAudience      int
+	AudienceEnabled  bool
+	JoinAs           string
+	RequiresPassword bool
+}
 
 // adds room codes from room_codes.txt into an array
 func getCodes() []string {
@@ -54,26 +68,37 @@ func makeApiCall(roomCodes []string) {
 			continue
 		}
 
-		// read json response body
+		// get json response body
 		body, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
 			log.Fatalln(err)
 		}
 
-		// convert to string and log
-		sb := string(body)
-		log.Printf(sb)
+		// unmarshall json into struct
+		var room Room
+		json.Unmarshal([]byte(body), &room)
+
+		if room.JoinAs == "audience" {
+			continue
+		}
+
+		if room.RequiresPassword {
+			continue
+		}
+
+		fmt.Printf("Room Code: %s, Game: %s \n", color.GreenString(room.RoomId), color.GreenString(room.AppTag))
 	}
 }
 
 func main() {
+	fmt.Println("Finding open rooms...\n")
+
 	roomCodes := getCodes()
 
 	// concurrency to speed up the process of finding rooms
-	go makeApiCall(roomCodes[10001:20000])
-	go makeApiCall(roomCodes[20001:30000])
-	go makeApiCall(roomCodes[30001:40000])
-	go makeApiCall(roomCodes[40001:50000])
-	go makeApiCall(roomCodes[50001:60000])
-	makeApiCall(roomCodes)
+	go makeApiCall(roomCodes[100000:200000])
+	go makeApiCall(roomCodes[200001:300000])
+	go makeApiCall(roomCodes[300001:400000])
+	go makeApiCall(roomCodes[400001:456976])
+	makeApiCall(roomCodes) // 0 - 100000
 }
