@@ -22,7 +22,7 @@ type Room struct {
 	RequiresPassword bool
 }
 
-// adds room codes from room_codes.txt into an array
+// adds room codes from room_codes.txt into array roomCodes[]
 func getCodes() []string {
 	file, err := os.Open("room_codes.txt")
 
@@ -50,7 +50,7 @@ func getCodes() []string {
 }
 
 // makes api calls to endpoint using every code in roomCodes[]
-func makeApiCall(roomCodes []string) {
+func findRooms(roomCodes []string) {
 	// base endpoint
 	url := "https://blobcast.jackboxgames.com/room/"
 
@@ -96,9 +96,9 @@ func main() {
 	roomCodes := getCodes()
 
 	// concurrency to speed up the process of finding rooms
-	go makeApiCall(roomCodes[100000:200000])
-	go makeApiCall(roomCodes[200001:300000])
-	go makeApiCall(roomCodes[300001:400000])
-	go makeApiCall(roomCodes[400001:456976])
-	makeApiCall(roomCodes) // 0 - 100000
+	go findRooms(roomCodes[100000:200000])
+	go findRooms(roomCodes[200001:300000])
+	go findRooms(roomCodes[300001:400000])
+	go findRooms(roomCodes[400001:456976])
+	findRooms(roomCodes) // 0 - 100000
 }
