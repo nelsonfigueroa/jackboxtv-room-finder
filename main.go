@@ -96,9 +96,13 @@ func main() {
 	roomCodes := getCodes()
 
 	// concurrency to speed up the process of finding rooms
-	go findRooms(roomCodes[100000:200000])
-	go findRooms(roomCodes[200001:300000])
-	go findRooms(roomCodes[300001:400000])
+	go findRooms(roomCodes[50000:100000])
+	go findRooms(roomCodes[100001:150000])
+	go findRooms(roomCodes[150001:200000])
+	go findRooms(roomCodes[200001:250000])
+	go findRooms(roomCodes[250001:300000])
+	go findRooms(roomCodes[300001:350000])
+	go findRooms(roomCodes[350001:400000])
 	go findRooms(roomCodes[400001:456976])
 	findRooms(roomCodes) // 0 - 100000
 }
