@@ -74,7 +74,7 @@ func findRooms(roomCodes []string) {
 			log.Fatalln(err)
 		}
 
-		// unmarshall json into struct
+		// deserialize json into struct
 		var room Room
 		json.Unmarshal([]byte(body), &room)
 
@@ -83,6 +83,10 @@ func findRooms(roomCodes []string) {
 		}
 
 		if room.RequiresPassword {
+			continue
+		}
+
+		if room.RoomId == "" {
 			continue
 		}
 
