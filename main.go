@@ -1,14 +1,12 @@
 package main
 
 import (
-	"bufio"
 	"encoding/json"
 	"fmt"
 	"github.com/fatih/color"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 )
 
 type Room struct {
@@ -20,33 +18,6 @@ type Room struct {
 	AudienceEnabled  bool
 	JoinAs           string
 	RequiresPassword bool
-}
-
-// adds room codes from room_codes.txt into array roomCodes[]
-func getCodes() []string {
-	file, err := os.Open("room_codes.txt")
-
-	if err != nil {
-		log.Fatalf("failed opening file: %s", err)
-	}
-
-	scanner := bufio.NewScanner(file)
-	scanner.Split(bufio.ScanLines)
-	var txtlines []string
-
-	for scanner.Scan() {
-		txtlines = append(txtlines, scanner.Text())
-	}
-
-	file.Close()
-
-	roomCodes := []string{}
-
-	for _, code := range txtlines {
-		roomCodes = append(roomCodes, code)
-	}
-
-	return roomCodes
 }
 
 // makes api calls to endpoint using every code in roomCodes[]
@@ -95,18 +66,16 @@ func findRooms(roomCodes []string) {
 }
 
 func main() {
-	fmt.Println("Finding open rooms...\n")
-
-	roomCodes := getCodes()
+	fmt.Println("Finding open rooms...")
 
 	// concurrency to speed up the process of finding rooms
-	go findRooms(roomCodes[50000:100000])
-	go findRooms(roomCodes[100001:150000])
-	go findRooms(roomCodes[150001:200000])
-	go findRooms(roomCodes[200001:250000])
-	go findRooms(roomCodes[250001:300000])
-	go findRooms(roomCodes[300001:350000])
-	go findRooms(roomCodes[350001:400000])
-	go findRooms(roomCodes[400001:456976])
-	findRooms(roomCodes) // begins from 0
+	go findRooms(RoomCodes[50000:100000])
+	go findRooms(RoomCodes[100001:150000])
+	go findRooms(RoomCodes[150001:200000])
+	go findRooms(RoomCodes[200001:250000])
+	go findRooms(RoomCodes[250001:300000])
+	go findRooms(RoomCodes[300001:350000])
+	go findRooms(RoomCodes[350001:400000])
+	go findRooms(RoomCodes[400001:456976])
+	findRooms(RoomCodes) // begins from 0
 }

@@ -4,15 +4,15 @@ Go script that finds available rooms on [jackbkox.tv](https://jackbox.tv/). You 
 
 ## Included Files
 
-- `main.go` - the actual script
-- `room_codes.txt` - textfile with all possible room code permutations. Used by `main.go`.
+- `main.go` - the actual script.
+- `roomcodes.go` - contains an array with all possible room code permutations. Used in `main.go`.
 
 ## Running
 
-You'll need Go installed. Then run:
+You'll need Go installed. Then, in a terminal, run:
 
 ```
-go run main.go
+go run .
 ```
 
 Your terminal will fill up with open rooms along with the room code and game being played:
