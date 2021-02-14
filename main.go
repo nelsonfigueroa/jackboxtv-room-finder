@@ -47,7 +47,10 @@ func findRooms(roomCodes []string) {
 
 		// deserialize json into struct
 		var room Room
-		json.Unmarshal([]byte(body), &room)
+		err = json.Unmarshal([]byte(body), &room)
+		if err != nil {
+			log.Fatalln(err)
+		}
 
 		if room.JoinAs == "audience" {
 			continue
