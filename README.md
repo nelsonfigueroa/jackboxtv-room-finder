@@ -9,10 +9,18 @@ Go script that finds available rooms on [jackbkox.tv](https://jackbox.tv/). You 
 
 ## Running
 
-You'll need Go installed. Then, in a terminal, run:
+You'll need Go installed. 
+
+Build the binary:
 
 ```
-go run .
+go build
+```
+
+Then run it:
+
+```
+./jackbox-tv-room-finder
 ```
 
 Your terminal will fill up with open rooms along with the room code and game being played:
