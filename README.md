@@ -11,7 +11,7 @@ Go script that finds available rooms on [jackbkox.tv](https://jackbox.tv/). You 
 
 You'll need Go installed. 
 
-Build the binary:
+Clone the repo and build the binary:
 
 ```
 go build
