@@ -39,6 +39,7 @@ func findRooms(roomCodes []string) {
 			continue
 		}
 
+		// if 500, continue
 		if resp.Status == "500 Internal Server Error" {
 			continue
 		}
