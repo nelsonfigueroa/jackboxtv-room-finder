@@ -39,6 +39,10 @@ func findRooms(roomCodes []string) {
 			continue
 		}
 
+		if resp.Status == "500 Internal Server Error" {
+			continue
+		}
+
 		// get json response body
 		body, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
@@ -49,6 +53,8 @@ func findRooms(roomCodes []string) {
 		var room Room
 		err = json.Unmarshal([]byte(body), &room)
 		if err != nil {
+			fmt.Println(fullUrl)
+			fmt.Println(resp.Status)
 			log.Fatalln(err)
 		}
 
