@@ -1,26 +1,20 @@
 # JackboxTV Room Finder
 
-Go script that finds available rooms on [jackbkox.tv](https://jackbox.tv/). You can join random ongoing games with strangers.
+Python script that finds available rooms on [jackbkox.tv](https://jackbox.tv/). You can join random ongoing games with strangers.
+
+This version is a Python port of the original golang script
 
 ## Included Files
 
-- `main.go` - the actual script.
-- `roomcodes.go` - contains an array with all possible room code permutations. Used in `main.go`.
+- `roomfinder.py` - the actual script.
+- `roomcodes.py` - contains an array with all possible room code permutations. Used in `roomfinder.py`.
 
 ## Running
 
-You'll need Go installed. 
-
-Clone the repo and build the binary:
+You'll need Python3 installed. 
 
 ```
-go build
-```
-
-Then run it:
-
-```
-./jackbox-tv-room-finder
+python3 ./jackbox-tv-room-finder
 ```
 
 Your terminal will fill up with open rooms along with the room code and game being played:
