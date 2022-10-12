@@ -50,12 +50,19 @@ func findRooms(roomCodes []string) {
 			log.Fatalln(err)
 		}
 
+		// if body is empty, continue
+		if len(body) == 0 {
+			fmt.Println("Empty response body. Your IP might be throttled/blacklisted")
+			continue
+		}
+
 		// deserialize json into struct
 		var room Room
 		err = json.Unmarshal([]byte(body), &room)
 		if err != nil {
 			fmt.Println(fullUrl)
 			fmt.Println(resp.Status)
+			fmt.Println(body)
 			log.Fatalln(err)
 		}
 
