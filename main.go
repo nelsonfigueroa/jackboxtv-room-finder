@@ -78,12 +78,12 @@ func findRooms(roomCodes []string) {
 			continue
 		}
 
-		fmt.Printf("Room Code: %s, Game: %s \n", color.GreenString(room.RoomId), color.GreenString(room.AppTag))
+		fmt.Printf("Room Code: %s, Game: %s, URL: %s \n", color.GreenString(room.RoomId), color.GreenString(room.AppTag), color.BlueString("https://jackbox.tv/%s", room.RoomId))
 	}
 }
 
 func main() {
-	fmt.Println("Finding open rooms...")
+	fmt.Println("Finding open rooms...\n")
 
 	// concurrency to speed up the process of finding rooms
 	go findRooms(RoomCodes[50000:100000])
