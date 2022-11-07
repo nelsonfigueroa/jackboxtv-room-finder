@@ -23,24 +23,20 @@ Then run it:
 ./jackbox-tv-room-finder
 ```
 
-Your terminal will fill up with open rooms along with the room code and game being played:
+Your terminal will fill up with open rooms along with the room code, name of the game, and a convenient URL that auto-fills the room code for you:
 
 ```
 Finding open rooms...
 
-Room Code: FRYI, Game: drawful2
-Room Code: CVZK, Game: fibbage2
-Room Code: FRYX, Game: fibbage
-Room Code: OFYE, Game: drawful
-Room Code: FSBZ, Game: quiplash3
-Room Code: RBYK, Game: drawful2
-Room Code: CWDI, Game: awshirt
-Room Code: WTXA, Game: drawful
+Room Code: OFVZ, Game: rapbattle, URL: https://jackbox.tv/OFVZ
+Room Code: IOBE, Game: drawful2international, URL: https://jackbox.tv/IOBE
+Room Code: RBZN, Game: monstermingle, URL: https://jackbox.tv/RBZN
+Room Code: WTXS, Game: blanky-blank, URL: https://jackbox.tv/WTXS
 ```
 
 ## Joining a Room
 
-To join a room, copy and paste the room code of your choosing into the "ROOM CODE" field on [jackbox.tv](https://jackbox.tv/). Write down any name you want in the "NAME" field, then click "PLAY"
+To join a room, copy and paste the room code of your choosing into the "ROOM CODE" field on [jackbox.tv](https://jackbox.tv/) (or use the URL that shows up in the terminal output). Write down any name you want in the "NAME" field, then click "PLAY"
 
 ## FAQ 
 
