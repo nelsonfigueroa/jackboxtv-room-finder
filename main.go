@@ -34,6 +34,12 @@ func findRooms(roomCodes []string) {
 			log.Fatalln(err)
 		}
 
+		// if 403, continue
+		if resp.Status == "403 Forbidden" {
+			fmt.Println("'403 Forbidden' status code. Your IP is likely blocked.")
+			continue
+		}
+
 		// if 404, continue
 		if resp.Status == "404 Not Found" {
 			continue
