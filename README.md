@@ -1,6 +1,6 @@
 # JackboxTV Room Finder
 
-Go script that finds available rooms on [jackbkox.tv](https://jackbox.tv/). You can join random ongoing games with strangers.
+Go script that finds available rooms on [jackbox.tv](https://jackbox.tv/). You can join random ongoing games with strangers.
 
 ## Included Files
 
