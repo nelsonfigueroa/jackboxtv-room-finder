@@ -2,9 +2,13 @@
 
 Go script that finds available rooms on [jackbox.tv](https://jackbox.tv/). You can join random ongoing games with strangers.
 
+The code takes a bruteforce approach to finding empty rooms. The code hits the jackbox.tv API with different room codes and prints out open rooms.
+
+**2023-01-25 Update**: It looks like jackbox.tv has set up some sort of throttling. This program will only work for around ~50 API requests before the IP address is throttled. At this time I have not figured out a way around this.
+
 ## Included Files
 
-- `main.go` - the actual script.
+- `main.go` - the main code.
 - `roomcodes.go` - contains an array with all possible room code permutations. Used in `main.go`.
 
 ## Running
