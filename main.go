@@ -6,7 +6,9 @@ import (
 	"github.com/fatih/color"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"net/http"
+	"time"
 )
 
 type Room struct {
@@ -25,7 +27,11 @@ func findRooms(roomCodes []string) {
 	// base endpoint
 	url := "https://blobcast.jackboxgames.com/room/"
 
-	for _, code := range roomCodes {
+	// infinite loop
+	for {
+		// getting random room code
+		randomIndex := rand.Intn(len(roomCodes))
+		code := roomCodes[randomIndex]
 
 		fullUrl := url + code
 
@@ -72,33 +78,37 @@ func findRooms(roomCodes []string) {
 			log.Fatalln(err)
 		}
 
+		// you can't participate in these games
 		if room.JoinAs == "audience" {
 			continue
 		}
 
+		// no point in trying to join a password-protected game
 		if room.RequiresPassword {
 			continue
 		}
 
+		// sometimes the Room ID is empty, ignore and continue
 		if room.RoomId == "" {
 			continue
 		}
 
-		fmt.Printf("Room Code: %s, Game: %s, URL: %s \n", color.GreenString(room.RoomId), color.GreenString(room.AppTag), color.BlueString("https://jackbox.tv/%s", room.RoomId))
+		fmt.Printf("Room Code: %s, Game: %s\n", color.GreenString(room.RoomId), color.GreenString(room.AppTag))
 	}
 }
 
 func main() {
-	fmt.Println("Finding open rooms...\n")
+	fmt.Println("Finding open rooms...")
+
+	// seed for randomizer. used for getting random room codes from RoomCodes slice
+	rand.Seed(time.Now().UnixNano())
 
 	// concurrency to speed up the process of finding rooms
-	go findRooms(RoomCodes[50000:100000])
-	go findRooms(RoomCodes[100001:150000])
-	go findRooms(RoomCodes[150001:200000])
-	go findRooms(RoomCodes[200001:250000])
-	go findRooms(RoomCodes[250001:300000])
-	go findRooms(RoomCodes[300001:350000])
-	go findRooms(RoomCodes[350001:400000])
-	go findRooms(RoomCodes[400001:456976])
-	findRooms(RoomCodes) // begins from 0
+	go findRooms(RoomCodes)
+	go findRooms(RoomCodes)
+	go findRooms(RoomCodes)
+	go findRooms(RoomCodes)
+	go findRooms(RoomCodes)
+	go findRooms(RoomCodes)
+	findRooms(RoomCodes)
 }
