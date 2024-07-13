@@ -8,7 +8,6 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
-	"time"
 )
 
 type Room struct {
@@ -42,7 +41,7 @@ func findRooms(roomCodes []string) {
 
 		// if 403, continue
 		if resp.Status == "403 Forbidden" {
-			fmt.Println("'403 Forbidden' status code. Your IP is likely blocked.")
+			fmt.Println("'403 Forbidden'. Your IP is likely blocked.")
 			continue
 		}
 
@@ -99,9 +98,6 @@ func findRooms(roomCodes []string) {
 
 func main() {
 	fmt.Println("Finding open rooms...")
-
-	// seed for randomizer. used for getting random room codes from RoomCodes slice
-	rand.Seed(time.Now().UnixNano())
 
 	// concurrency to speed up the process of finding rooms
 	go findRooms(RoomCodes)
