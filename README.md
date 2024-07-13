@@ -11,9 +11,9 @@ The code takes a bruteforce approach to finding empty rooms. The code hits the j
 - `main.go` - the main code.
 - `roomcodes.go` - contains an array with all possible room code permutations. Used in `main.go`.
 
-## Running
+## Running with Go
 
-You'll need Go installed. 
+You'll need Go installed.
 
 Clone the repo and build the binary:
 
@@ -26,6 +26,22 @@ Then run it:
 ```
 ./jackbox-tv-room-finder
 ```
+
+## Running with Docker
+
+Clone this repo and build the Docker image:
+
+```
+docker build . -t jackbox-tv-roomfinder
+```
+
+Then run the image as a container:
+
+```
+docker run jackbox-tv-roomfinder
+```
+
+## Output
 
 Your terminal will fill up with open rooms along with the room code and name of the game:
 
@@ -42,7 +58,7 @@ Room Code: WTXS, Game: blanky-blank
 
 To join a room, copy and paste the room code of your choosing into the "ROOM CODE" field on [jackbox.tv](https://jackbox.tv/). Write down any name you want in the "NAME" field, then click "PLAY"
 
-## FAQ 
+## FAQ
 
 **Won't joining a random room full of strangers ruin their experience?**
 
